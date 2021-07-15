@@ -1,15 +1,17 @@
 import React from "react";
+import { gif } from "./data/sample";
+import Search from "./components/Search";
+import Gif from "./components/Gif";
 import "./App.css";
 
-export default function App() {
+function App() {
+  const { url, title } = gif;
   return (
     <div className="App">
-      <input type="text" name="search" placeholder="Search..." />
-      <input type="submit" value="Search" />
-      <img
-        src="https://media.giphy.com/media/Vh8pbGX3SGRwFDh3V0/source.gif"
-        alt="Source GIF"
-      />
+      <Search />
+      <Gif url={url} title={title} />
     </div>
   );
 }
+
+export default App;
