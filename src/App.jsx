@@ -1,16 +1,11 @@
-import React from "react";
-import { gifs } from "./data/sample";
-import Search from "./components/Search";
-import Gif from "./components/Gif";
 import "./App.css";
+import React from "react";
+import SearchGif from "./pages/SearchGif";
 
 function App() {
   return (
     <div className="App">
-      <Search />
-      {gifs.map(({ id, title, webp, rating }) => (
-        rating === 'g' && <Gif url={webp} title={title} key={id} />
-      ))}
+      <SearchGif />
     </div>
   );
 }
