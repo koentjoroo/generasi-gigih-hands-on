@@ -1,9 +1,10 @@
-import React from "react"
-import Search from "../../components/Search"
-import Gif from "../../components/Gif"
+import React from 'react'
+import Search from '../../components/Search'
+import Gif from '../../components/Gif'
 
 const SearchGif = () => {
   const [images, setImages] = React.useState([])
+  const [query, setQuery] = React.useState('')
 
   const getImages = async query => {
     const API_KEY = import.meta.env.VITE_APP_GIPHY_API_KEY
@@ -15,13 +16,20 @@ const SearchGif = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const query = e.target.query.value
     getImages(query)
   }
 
+  const handleQueryChanges = e => setQuery(e.target.value)
+
+  React.useEffect(() => getImages(query), [query])
+
   return (
     <div>
-      <Search handleSubmit={handleSubmit} />
+      <Search
+        handleSubmit={handleSubmit}
+        handleQueryChanges={handleQueryChanges}
+        query={query}
+      />
       {images.map(image => (
         <Gif
           url={image.images.preview_webp.url}
