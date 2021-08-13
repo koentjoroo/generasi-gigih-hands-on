@@ -1,6 +1,12 @@
 import React from 'react'
 
-const Search = ({ handleSubmit, handleQueryChanges, query }) => {
+type SearchProps = {
+  handleSubmit: React.FormEventHandler<HTMLFormElement>,
+  handleQueryChanges: React.ChangeEventHandler<HTMLInputElement>,
+  query: string
+}
+
+const Search = ({ handleSubmit, handleQueryChanges, query }: SearchProps) => {
   return (
     <form onSubmit={handleSubmit}>
       <input
